@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Daniela Mae Estrada Maro</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Dani<span>ela</span></a>
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeToggle">🌙</button>
+        <button id="hamburger" class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <h1>Contact Me</h1>
+    <p>Let's connect and create something great</p>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p>Feel free to reach out through email or social media. I'd love to hear from you!</p>
+      <ul class="contact-list">
+        <li><strong>Email:</strong> <a href="mailto:nielamae959@gmail.com">nielamae959@gmail.com</a></li>
+        <li><strong>Facebook:</strong> <a href="https://www.facebook.com/daniela.542435" target="_blank">Daniela Maro</a></li>
+        <li><strong>Instagram:</strong> <a href="https://www.instagram.com/da.niela_m" target="_blank">@da.niela_m</a></li>
+      </ul>
+    </div>
+
+    <div class="contact-form-wrapper">
+      <h2>Send a Message</h2>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your full name" />
+          <small class="error" id="nameError"></small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" />
+          <small class="error" id="emailError"></small>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+          <small class="error" id="messageError"></small>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="success-msg" id="successMsg"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Daniela Mae Estrada Maro. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://www.facebook.com/daniela.542435" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/da.niela_m" target="_blank">Instagram</a>
+      <a href="mailto:nielamae959@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <button id="scrollTop" class="scroll-top">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Daniela Mae Estrada Maro</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Dani<span>ela</span></a>
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeToggle">🌙</button>
+        <button id="hamburger" class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <h1>My Projects</h1>
+    <p>A selection of school and personal works</p>
+  </section>
+
+  <section class="projects-section">
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <button class="filter-btn" data-filter="database">Database</button>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+
+      <article class="project-card" data-category="web">
+        <img src="images/project1.jpg" alt="Portfolio Website" class="project-img" />
+        <div class="project-info">
+          <h3>Personal Portfolio Website</h3>
+          <p>A responsive 6-page portfolio built with HTML, CSS, and JavaScript featuring dark/light mode and form validation.</p>
+          <div class="tech-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="design">
+        <img src="images/project2.jpg" alt="Mobile App UI Design" class="project-img" />
+        <div class="project-info">
+          <h3>Mobile App UI Concept</h3>
+          <p>A clean UI mockup for a student planner app created in Canva, focusing on simplicity and accessibility.</p>
+          <div class="tech-tags">
+            <span>Canva</span><span>UI Design</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="database">
+        <img src="images/project3.jpg" alt="Student Record System" class="project-img" />
+        <div class="project-info">
+          <h3>Student Record System</h3>
+          <p>A simple MySQL-based database system for storing and retrieving student information with basic CRUD operations.</p>
+          <div class="tech-tags">
+            <span>MySQL</span><span>PHP</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="web">
+        <img src="images/project4.jpg" alt="Simple Calculator App" class="project-img" />
+        <div class="project-info">
+          <h3>JavaScript Calculator</h3>
+          <p>An interactive calculator that performs basic arithmetic operations with a clean pink-and-black themed interface.</p>
+          <div class="tech-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ======= IMAGE MODAL ======= -->
+  <div class="modal" id="imageModal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Project Preview" />
+  </div>
+
+  <footer class="footer">
+    <p>© 2026 Daniela Mae Estrada Maro. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://www.facebook.com/daniela.542435" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/da.niela_m" target="_blank">Instagram</a>
+      <a href="mailto:nielamae959@gmail.com">Email</a>
+    </div>
+  </footer>
+
+  <button id="scrollTop" class="scroll-top">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>
