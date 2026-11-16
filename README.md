@@ -85,8 +85,10 @@ The dynamic version is developed locally with XAMPP. GitHub Pages serves static 
 2. In phpMyAdmin, import `database/schema.sql`. It creates the `personal_portfolio` database and inserts the existing portfolio content as starter data.
 3. Copy `includes/config.example.php` to `includes/config.local.php` and set the database username and password for your local MySQL installation. This local file is ignored by Git.
 4. Open the project through Apache, for example `http://localhost/My-ITS-300-personal-portfolio-website/`.
+5. Create the first admin account from a command prompt in the project folder: `C:\xampp\php\php.exe database\create_admin.php admin@example.com`. The script generates a random password and displays it once.
+6. Open `http://localhost/My-ITS-300-personal-portfolio-website/admin/login.php` and sign in with the generated credentials.
 
-The PHP connection helper is in `includes/database.php`. The public pages and admin dashboard are still being migrated; this setup currently adds the database foundation only. Do not put database credentials in tracked files.
+The PHP connection helper is in `includes/database.php`. The admin login and a starter dashboard are available at `/admin/`; content management and the public-page migration are still in progress. Do not put database credentials in tracked files.
 
 ---
 
