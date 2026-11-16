@@ -1,6 +1,6 @@
 # Daniela Mae Estrada Maro | Personal Portfolio
 
-A modern, responsive 6-page personal portfolio website built with HTML, CSS, and JavaScript.
+A responsive personal portfolio website built with HTML, CSS, and JavaScript. The midterm version is static; the final project is being extended with a PHP and MySQL backend for local development in XAMPP.
 
 🔗 **Live Website:** [https://nielamae9.github.io/My-ITS-300-personal-portfolio-website/](https://nielamae9.github.io/My-ITS-300-personal-portfolio-website/)
 
@@ -71,11 +71,22 @@ My-ITS-300-personal-portfolio-website/
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Run the Midterm Website Locally
 
 1. Clone or download this repository.
 2. Open `index.html` in any modern web browser.
 3. That's it — no installation or build step needed!
+
+## 🧰 PHP and MySQL Development Setup
+
+The dynamic version is developed locally with XAMPP. GitHub Pages serves static files only, so it cannot run the PHP application or connect to its MySQL database.
+
+1. Install and start Apache and MySQL in XAMPP.
+2. In phpMyAdmin, import `database/schema.sql`. It creates the `personal_portfolio` database and inserts the existing portfolio content as starter data.
+3. Copy `includes/config.example.php` to `includes/config.local.php` and set the database username and password for your local MySQL installation. This local file is ignored by Git.
+4. Open the project through Apache, for example `http://localhost/My-ITS-300-personal-portfolio-website/`.
+
+The PHP connection helper is in `includes/database.php`. The public pages and admin dashboard are still being migrated; this setup currently adds the database foundation only. Do not put database credentials in tracked files.
 
 ---
 
