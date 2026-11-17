@@ -10,7 +10,10 @@ try {
     );
     $profileStatement->execute();
     $profile = $profileStatement->fetch();
-} catch (Throwable $error) {
+} catch (PDOException $error) {
+    error_log('Portfolio profile database error: ' . $error->getMessage());
+    $profile = null;
+} catch (RuntimeException $error) {
     error_log('Failed to load portfolio profile: ' . $error->getMessage());
     $profile = null;
 }
@@ -86,7 +89,7 @@ $profileImage = escape_html((string) ($profile['profile_image'] ?? 'images/profi
       <p class="greeting">Hello, I'm</p>
       <h1><?= $fullName ?></h1>
       <h2 class="typing-container">
-        <span id="typed-text"></span><span class="cursor">|</span>
+        <span id="typed-text" data-headline="<?= $headline ?>"></span><span class="cursor">|</span>
       </h2>
       <p class="hero-desc">
         <?= $introduction ?>

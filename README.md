@@ -1,6 +1,6 @@
 # Daniela Mae Estrada Maro | Personal Portfolio
 
-A responsive personal portfolio website built with HTML, CSS, and JavaScript. The midterm version is static; the final project is being extended with a PHP and MySQL backend for local development in XAMPP.
+A responsive portfolio with the original HTML page URLs and a PHP/MySQL backend for database-driven content and admin management in XAMPP.
 
 🔗 **Live Website:** [https://nielamae9.github.io/My-ITS-300-personal-portfolio-website/](https://nielamae9.github.io/My-ITS-300-personal-portfolio-website/)
 
@@ -16,12 +16,12 @@ I am Daniela Mae Estrada Maro, a 3rd-year Bachelor of Science in Information Tec
 
 | Page | Description |
 |------|-------------|
-| **Home** | Introduction, profile image, typing animation, and call-to-action buttons |
-| **About** | Background, education, goals, and interests |
-| **Skills** | Technical skills with animated bars and tools grid |
-| **Projects** | 4 featured projects with images, descriptions, and technologies used |
-| **Resume** | Education timeline, experience, activities, and certifications |
-| **Contact** | Email, social links, and a validated contact form |
+| **Home** | PHP homepage with profile information, typing animation, and call-to-action buttons |
+| **About** | Profile biography and image |
+| **Skills** | Database-driven technical skills and tools |
+| **Projects** | Database-driven projects with categories, images, and technologies |
+| **Resume** | Database-driven education, experience, and achievements |
+| **Contact** | Validated contact form that stores messages for admin review |
 
 ---
 
@@ -37,6 +37,11 @@ I am Daniela Mae Estrada Maro, a 3rd-year Bachelor of Science in Information Tec
 - 📂 Accordion for certifications
 - ✅ JavaScript form validation on the contact page
 - ⬆️ Scroll-to-top button
+- 🔐 PHP admin login, dashboard, and one-time admin setup
+- ✏️ Admin editing for profile, website settings, skills, projects, education, experience, and achievements
+- 📥 Admin contact-message review, read/unread status, and deletion
+- 🖼️ Image uploads validated by file content, size-limited, and stored with random names
+- 🛡️ Prepared database queries, CSRF checks, escaped output, and a honeypot on contact submissions
 
 ---
 
@@ -45,41 +50,34 @@ I am Daniela Mae Estrada Maro, a 3rd-year Bachelor of Science in Information Tec
 - **HTML5** — structure and content
 - **CSS3** — styling with Flexbox and Grid
 - **JavaScript (Vanilla)** — interactivity and features
-- **GitHub Pages** — free hosting
+- **PHP and MySQL** — dynamic pages and admin tools in XAMPP
+- **GitHub Pages** — static preview only; it cannot run PHP or connect to MySQL
 
 ---
 
-## 📁 Folder Structure
-My-ITS-300-personal-portfolio-website/
-├── index.html # Home page
-├── about.html # About page
-├── skills.html # Skills page
-├── projects.html # Projects page
-├── resume.html # Resume page
-├── contact.html # Contact page
-├── README.md # This file
-├── css/
-│ └── style.css # All styles
-├── js/
-│ └── script.js # All JavaScript features
-└── images/
-├── profile.jpg
-├── project1.jpg
-├── project2.jpg
-├── project3.jpg
-└── project4.jpg
+## 📁 Main Project Files
+
+- `index.php` and the existing `.html` pages — dynamic home and static-compatible public page URLs
+- `admin/` — login, dashboard, profile/settings, content, and message management
+- `api/` — public content and contact-message endpoints
+- `database/schema.sql` — database tables and starter content
+- `includes/` — database access, validation, security, and upload helpers
+- `js/` — public page rendering and interactivity
+- `images/` and `uploads/` — bundled and admin-uploaded images
 
 ---
 
-## 🚀 Run the Midterm Website Locally
+## 🚀 Open the Static Preview
 
 1. Clone or download this repository.
 2. Open `index.html` in any modern web browser.
-3. That's it — no installation or build step needed!
+3. Static pages keep their existing URLs. PHP endpoints and contact-message submission need Apache and MySQL as described below.
 
 ## 🧰 PHP and MySQL Development Setup
 
-The dynamic version is developed locally with XAMPP. GitHub Pages serves static files only, so it cannot run the PHP application or connect to its MySQL database.
+The dynamic version runs locally with XAMPP. GitHub Pages serves static files only, so PHP endpoints, database-backed pages, admin tools, uploads, and contact-message storage require a PHP/MySQL host. The original `.html` pages remain available as static previews.
+
+The application requires PHP 8.0 or newer with PDO MySQL and Fileinfo enabled; XAMPP includes these extensions.
 
 1. Install and start Apache and MySQL in XAMPP.
 2. In phpMyAdmin, import `database/schema.sql`. It creates the `personal_portfolio` database and inserts the existing portfolio content as starter data.
@@ -87,8 +85,9 @@ The dynamic version is developed locally with XAMPP. GitHub Pages serves static 
 4. Open the project through Apache, for example `http://localhost/My-ITS-300-personal-portfolio-website/`.
 5. Create the first admin account from a command prompt in the project folder: `C:\xampp\php\php.exe database\create_admin.php admin@example.com`. The script generates a random password and displays it once.
 6. Open `http://localhost/My-ITS-300-personal-portfolio-website/admin/login.php` and sign in with the generated credentials.
+7. Use the dashboard to edit profile and website settings, manage portfolio content, and review contact messages.
 
-The PHP connection helper is in `includes/database.php`. The admin login and a starter dashboard are available at `/admin/`; content management and the public-page migration are still in progress. Do not put database credentials in tracked files.
+The PHP connection helper is in `includes/database.php`. Keep the database credentials in the ignored `includes/config.local.php` file and never commit that file. Uploaded files are restricted by `uploads/.htaccess` on Apache.
 
 ---
 

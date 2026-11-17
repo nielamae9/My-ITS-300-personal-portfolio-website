@@ -1,6 +1,19 @@
 
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
+fetch('api/content.php?section=settings')
+  .then(response => response.ok ? response.json() : Promise.reject(new Error('Website settings could not be loaded.')))
+  .then(data => {
+    if (!data.settings || typeof data.settings.site_title !== 'string' || typeof data.settings.footer_text !== 'string') {
+      throw new Error('The website settings response is invalid.');
+    }
+    const pageTitle = document.title.split(' | ')[0].trim();
+    document.title = pageTitle === data.settings.site_title
+      ? data.settings.site_title : `${pageTitle} | ${data.settings.site_title}`;
+    document.querySelectorAll('.footer > p').forEach(footer => { footer.textContent = data.settings.footer_text; });
+  })
+  .catch(error => console.error(error));
+
 if (localStorage.getItem('theme') === 'dark') {
   body.classList.add('dark');
   if (themeToggle) themeToggle.textContent = '☀️';
@@ -32,7 +45,7 @@ if (hamburger && navMenu) {
 const typedText = document.getElementById('typed-text');
 if (typedText) {
   const phrases = [
-    'IT Student',
+    typedText.dataset.headline || 'IT Student and Aspiring UI/UX Designer',
     'Aspiring UI/UX Designer',
     'Web Enthusiast',
     'Creative Thinker'
@@ -96,7 +109,6 @@ if (skillFills.length > 0) {
 
 
 const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
 
 if (filterBtns.length > 0) {
   filterBtns.forEach(btn => {
@@ -105,7 +117,7 @@ if (filterBtns.length > 0) {
       btn.classList.add('active');
       const filter = btn.dataset.filter;
 
-      projectCards.forEach(card => {
+      document.querySelectorAll('.project-card').forEach(card => {
         if (filter === 'all' || card.dataset.category === filter) {
           card.style.display = 'block';
           setTimeout(() => { card.style.opacity = '1'; }, 10);
@@ -119,14 +131,15 @@ if (filterBtns.length > 0) {
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
 const modalClose = document.getElementById('modalClose');
-const projectImgs = document.querySelectorAll('.project-img');
+const projectsGrid = document.getElementById('projectsGrid');
 
-if (modal) {
-  projectImgs.forEach(img => {
-    img.addEventListener('click', () => {
+if (modal && projectsGrid) {
+  projectsGrid.addEventListener('click', event => {
+    const image = event.target.closest('.project-img');
+    if (image) {
       modal.classList.add('active');
-      modalImg.src = img.src;
-    });
+      modalImg.src = image.src;
+    }
   });
   if (modalClose) modalClose.addEventListener('click', () => modal.classList.remove('active'));
   modal.addEventListener('click', (e) => {

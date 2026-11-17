@@ -145,6 +145,6 @@ INSERT INTO achievements (title, description, date_label, sort_order) VALUES
     ('Certificate of Recognition — Academic Activities', 'Recognized for involvement in school-based IT and academic activities.', '', 2);
 
 INSERT INTO website_settings (setting_key, setting_value) VALUES
-    ('site_title', 'Daniela Mae Estrada Maro | IT Student Portfolio'),
+    ('site_title', 'Daniela Mae Estrada Maro'),
     ('footer_text', '© 2026 Daniela Mae Estrada Maro. All rights reserved.')
 ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value);
