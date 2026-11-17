@@ -52,13 +52,21 @@ $csrfToken = get_csrf_token();
       <?php foreach ($statistics as $label => $count): ?>
         <article class="stat-card">
           <h3><?= escape_html($label) ?></h3>
-          <p><?= $count ?></p>
+          <p class="statistic-value"><?= $count ?></p>
         </article>
       <?php endforeach; ?>
     </section>
 
-    <p class="dashboard-note">Content management tools will be added in the next development steps.</p>
-    <a class="back-link" href="../index.html">View portfolio</a>
+    <p><a class="back-link" href="profile.php">Edit profile</a></p>
+    <p><a class="back-link" href="settings.php">Edit website settings</a></p>
+    <p><a class="back-link" href="messages.php">Manage contact messages</a></p>
+    <p><a class="back-link" href="skills.php">Manage skills</a></p>
+    <p><a class="back-link" href="content.php?section=projects">Manage projects</a></p>
+    <p><a class="back-link" href="content.php?section=education">Manage education</a></p>
+    <p><a class="back-link" href="content.php?section=experience">Manage experience</a></p>
+    <p><a class="back-link" href="content.php?section=achievements">Manage achievements</a></p>
+    <p class="dashboard-note">Choose a management page above to update portfolio content.</p>
+    <a class="back-link" href="../">View portfolio</a>
   </main>
 </body>
 </html>

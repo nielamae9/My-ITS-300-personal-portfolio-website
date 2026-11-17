@@ -80,7 +80,7 @@
   font-size: 1rem;
 }
 
-.stat-card p {
+.stat-card .statistic-value {
   margin: 8px 0 0;
   font-size: 2rem;
   font-weight: 700;
@@ -90,6 +90,42 @@
   margin-top: 28px;
 }
 
+.admin-dashboard > form {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.admin-dashboard label {
+  display: grid;
+  gap: 6px;
+}
+
+.admin-dashboard input:not([type="hidden"]),
+.admin-dashboard textarea,
+.admin-dashboard select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.admin-dashboard textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.admin-dashboard article form {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.admin-dashboard button {
+  cursor: pointer;
+}
+
 body.dark .admin-card,
 body.dark .admin-dashboard {
   background: var(--dark-card);
@@ -97,6 +133,14 @@ body.dark .admin-dashboard {
 
 body.dark .stat-card {
   background: #292029;
+}
+
+body.dark .admin-dashboard input:not([type="hidden"]),
+body.dark .admin-dashboard textarea,
+body.dark .admin-dashboard select {
+  border-color: #555;
+  background: #292029;
+  color: #fff;
 }
 
 @media (max-width: 600px) {

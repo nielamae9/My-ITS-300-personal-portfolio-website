@@ -122,7 +122,7 @@ $csrfToken = get_csrf_token();
       <button class="btn btn-primary" type="submit">Log in</button>
     </form>
 
-    <a class="back-link" href="../index.html">Back to portfolio</a>
+    <a class="back-link" href="../">Back to portfolio</a>
   </main>
 </body>
 </html>
