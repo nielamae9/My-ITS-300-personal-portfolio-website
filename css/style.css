@@ -1,4 +1,4 @@
-/* ============ THEME VARIABLES ============ */
+
 :root {
   --pink: #ff4d94;
   --pink-dark: #d6336c;
@@ -45,7 +45,7 @@ body {
 img { max-width: 100%; display: block; }
 a { text-decoration: none; }
 
-/* ============ NAVBAR ============ */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -119,7 +119,7 @@ body.dark .logo span { color: #fff; }
   border-radius: 2px;
 }
 
-/* ============ HERO ============ */
+
 .hero {
   max-width: 1200px;
   margin: 40px auto;
@@ -162,7 +162,7 @@ body.dark .logo span { color: #fff; }
   margin: auto;
 }
 
-/* ============ SECTION TITLES ============ */
+
 .section-title {
   text-align: center;
   font-size: 2rem;
@@ -177,7 +177,7 @@ body.dark .logo span { color: #fff; }
 .page-header p { color: #666; }
 body.dark .page-header p { color: #bbb; }
 
-/* ============ HIGHLIGHTS ============ */
+
 .highlights { max-width: 1200px; margin: 60px auto; padding: 20px; }
 .highlight-grid {
   display: grid;
@@ -195,7 +195,7 @@ body.dark .page-header p { color: #bbb; }
 .card:hover { transform: translateY(-8px); }
 .card h3 { color: var(--pink); margin-top: 0; }
 
-/* ============ ABOUT ============ */
+
 .about-section {
   max-width: 1200px;
   margin: 20px auto 60px;
@@ -222,7 +222,7 @@ body.dark .page-header p { color: #bbb; }
   font-size: 0.85rem;
 }
 
-/* ============ SKILLS ============ */
+
 .skills-section { max-width: 900px; margin: 20px auto 60px; padding: 20px; }
 .skill { margin-bottom: 22px; }
 .skill-head { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; }
@@ -261,7 +261,7 @@ body.dark .bar { background: #333; }
   transform: translateY(-5px);
 }
 
-/* ============ PROJECTS ============ */
+
 .projects-section { max-width: 1200px; margin: 20px auto 60px; padding: 20px; }
 .filter-buttons {
   display: flex;
@@ -311,7 +311,7 @@ body.dark .bar { background: #333; }
 }
 body.dark .tech-tags span { background: var(--pink-dark); color: #fff; }
 
-/* ============ MODAL ============ */
+
 .modal {
   display: none;
   position: fixed;
@@ -336,7 +336,7 @@ body.dark .tech-tags span { background: var(--pink-dark); color: #fff; }
   cursor: pointer;
 }
 
-/* ============ RESUME ============ */
+
 .resume-section { max-width: 900px; margin: 20px auto 60px; padding: 20px; }
 .timeline { border-left: 3px solid var(--pink); padding-left: 25px; }
 .timeline-item {
@@ -402,7 +402,7 @@ body.dark .timeline-date { background: var(--pink-dark); color: #fff; }
   padding: 15px 20px;
 }
 
-/* ============ CONTACT ============ */
+
 .contact-section {
   max-width: 1100px;
   margin: 20px auto 60px;
@@ -446,7 +446,7 @@ body.dark .timeline-date { background: var(--pink-dark); color: #fff; }
   margin-top: 15px;
 }
 
-/* ============ FOOTER ============ */
+
 .footer {
   background: var(--black);
   color: #fff;
@@ -457,7 +457,7 @@ body.dark .timeline-date { background: var(--pink-dark); color: #fff; }
 .footer .socials { margin-top: 10px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .footer .socials a { color: var(--pink); font-weight: 600; }
 
-/* ============ SCROLL TOP ============ */
+
 .scroll-top {
   position: fixed;
   bottom: 30px;
@@ -477,7 +477,7 @@ body.dark .timeline-date { background: var(--pink-dark); color: #fff; }
 .scroll-top.show { display: block; }
 .scroll-top:hover { background: var(--pink-dark); transform: translateY(-5px); }
 
-/* ============ RESPONSIVE ============ */
+
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; text-align: center; }
   .hero-image { order: -1; }

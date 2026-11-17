@@ -1,10 +1,6 @@
-/* =============================================
-   1. DARK / LIGHT MODE with LocalStorage
-   ============================================= */
+
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
-
-// Load saved theme on page load
 if (localStorage.getItem('theme') === 'dark') {
   body.classList.add('dark');
   if (themeToggle) themeToggle.textContent = '☀️';
@@ -19,9 +15,7 @@ if (themeToggle) {
   });
 }
 
-/* =============================================
-   2. MOBILE NAVIGATION (Hamburger)
-   ============================================= */
+
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
@@ -29,16 +23,12 @@ if (hamburger && navMenu) {
   hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('open');
   });
-
-  // Close menu when a link is clicked
   navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navMenu.classList.remove('open'));
   });
 }
 
-/* =============================================
-   3. TYPING EFFECT (Home page)
-   ============================================= */
+
 const typedText = document.getElementById('typed-text');
 if (typedText) {
   const phrases = [
@@ -74,9 +64,7 @@ if (typedText) {
   type();
 }
 
-/* =============================================
-   4. SCROLL TO TOP BUTTON
-   ============================================= */
+
 const scrollBtn = document.getElementById('scrollTop');
 if (scrollBtn) {
   window.addEventListener('scroll', () => {
@@ -91,9 +79,7 @@ if (scrollBtn) {
   });
 }
 
-/* =============================================
-   5. SKILL BAR ANIMATION (Skills page)
-   ============================================= */
+
 const skillFills = document.querySelectorAll('.fill');
 if (skillFills.length > 0) {
   function animateSkills() {
@@ -108,9 +94,7 @@ if (skillFills.length > 0) {
   window.addEventListener('load', animateSkills);
 }
 
-/* =============================================
-   6. PROJECT FILTERING + IMAGE MODAL (Projects page)
-   ============================================= */
+
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
@@ -132,8 +116,6 @@ if (filterBtns.length > 0) {
     });
   });
 }
-
-// Image Modal
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImg');
 const modalClose = document.getElementById('modalClose');
@@ -152,9 +134,7 @@ if (modal) {
   });
 }
 
-/* =============================================
-   7. ACCORDION (Resume page)
-   ============================================= */
+
 const accordionBtns = document.querySelectorAll('.accordion-btn');
 accordionBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -170,9 +150,7 @@ accordionBtns.forEach(btn => {
   });
 });
 
-/* =============================================
-   8. CONTACT FORM VALIDATION (Contact page)
-   ============================================= */
+
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
@@ -191,21 +169,15 @@ if (contactForm) {
     emailError.textContent = '';
     messageError.textContent = '';
     successMsg.textContent = '';
-
-    // Name validation
     if (name.value.trim().length < 2) {
       nameError.textContent = 'Please enter your name (at least 2 characters).';
       isValid = false;
     }
-
-    // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email.value.trim())) {
       emailError.textContent = 'Please enter a valid email address.';
       isValid = false;
     }
-
-    // Message validation
     if (message.value.trim().length < 10) {
       messageError.textContent = 'Message must be at least 10 characters.';
       isValid = false;
