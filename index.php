@@ -29,8 +29,8 @@ $fullName = escape_html((string) ($profile['full_name'] ?? 'Daniela Mae Estrada 
 $headline = escape_html((string) ($profile['headline'] ?? 'IT Student and Aspiring UI/UX Designer'));
 $introduction = escape_html((string) ($profile['introduction'] ?? 'I am an IT student aspiring to become a UI/UX designer.'));
 $email = escape_html((string) ($profile['email'] ?? 'nielamae959@gmail.com'));
-$facebookUrl = escape_html((string) ($profile['facebook_url'] ?? 'https://www.facebook.com/daniela.542435'));
-$instagramUrl = escape_html((string) ($profile['instagram_url'] ?? 'https://www.instagram.com/da.niela_m'));
+$facebookUrl = escape_html(safe_external_url((string) ($profile['facebook_url'] ?? 'https://www.facebook.com/daniela.542435')));
+$instagramUrl = escape_html(safe_external_url((string) ($profile['instagram_url'] ?? 'https://www.instagram.com/da.niela_m')));
 $profileImage = escape_html((string) ($profile['profile_image'] ?? 'images/profile.jpg'));
 ?>
 <!DOCTYPE html>

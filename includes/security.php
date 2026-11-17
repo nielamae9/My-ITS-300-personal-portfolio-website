@@ -41,6 +41,20 @@ function escape_html(string $value): string
     return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+function safe_external_url(string $url): string
+{
+    $scheme = parse_url($url, PHP_URL_SCHEME);
+
+    if (!filter_var($url, FILTER_VALIDATE_URL)
+        || !is_string($scheme)
+        || !in_array(strtolower($scheme), ['http', 'https'], true)
+    ) {
+        return '';
+    }
+
+    return $url;
+}
+
 function end_admin_session(): void
 {
     $_SESSION = [];
