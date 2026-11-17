@@ -2,13 +2,23 @@
 
 function start_admin_session(): void
 {
+    start_secure_session('portfolio_admin');
+}
+
+function start_contact_session(): void
+{
+    start_secure_session('portfolio_contact');
+}
+
+function start_secure_session(string $name): void
+{
     if (session_status() === PHP_SESSION_ACTIVE) {
         return;
     }
 
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
-    session_name('portfolio_admin');
+    session_name($name);
     session_set_cookie_params([
         'lifetime' => 0,
         'path' => '/',
