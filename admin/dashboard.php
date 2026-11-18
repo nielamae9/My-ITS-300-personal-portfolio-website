@@ -58,6 +58,7 @@ $csrfToken = get_csrf_token();
     </section>
 
     <p><a class="back-link" href="profile.php">Edit profile</a></p>
+    <p><a class="back-link" href="account.php">Change admin login email or password</a></p>
     <p><a class="back-link" href="settings.php">Edit website settings</a></p>
     <p><a class="back-link" href="messages.php">Manage contact messages</a></p>
     <p><a class="back-link" href="skills.php">Manage skills</a></p>

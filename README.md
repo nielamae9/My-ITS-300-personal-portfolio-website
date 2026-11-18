@@ -38,6 +38,7 @@ I am Daniela Mae Estrada Maro, a 3rd-year Bachelor of Science in Information Tec
 - ✅ JavaScript form validation on the contact page
 - ⬆️ Scroll-to-top button
 - 🔐 PHP admin login, dashboard, and one-time admin setup
+- 🔑 Admins can update their login email and password after signing in
 - ✏️ Admin editing for profile, website settings, skills, projects, education, experience, and achievements
 - 📥 Admin contact-message review, read/unread status, and deletion
 - 🖼️ Image uploads validated by file content, size-limited, and stored with random names
@@ -83,9 +84,9 @@ The application requires PHP 8.0 or newer with PDO MySQL and Fileinfo enabled; X
 2. In phpMyAdmin, import `database/schema.sql`. It creates the `personal_portfolio` database and inserts the existing portfolio content as starter data.
 3. Copy `includes/config.example.php` to `includes/config.local.php` and set the database username and password for your local MySQL installation. This local file is ignored by Git.
 4. Open the project through Apache, for example `http://localhost/My-ITS-300-personal-portfolio-website/`.
-5. Create the first admin account from a command prompt in the project folder: `C:\xampp\php\php.exe database\create_admin.php admin@example.com`. The script generates a random password and displays it once.
+5. Create the first admin account from a command prompt in the project folder: `C:\xampp\php\php.exe database\create_admin.php nielamae959@gmail.com`. The script generates a random password and displays it once.
 6. Open `http://localhost/My-ITS-300-personal-portfolio-website/admin/login.php` and sign in with the generated credentials.
-7. Use the dashboard to edit profile and website settings, manage portfolio content, and review contact messages.
+7. Use the dashboard to change the admin login email or password, edit profile and website settings, manage portfolio content, and review contact messages.
 
 The PHP connection helper is in `includes/database.php`. Keep the database credentials in the ignored `includes/config.local.php` file and never commit that file. Uploaded files are restricted by `uploads/.htaccess` on Apache.
 
