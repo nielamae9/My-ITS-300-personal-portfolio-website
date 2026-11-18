@@ -8,4 +8,5 @@ return [
         'username' => 'root',
         'password' => '',
     ],
+    'admin_setup_token' => '',
 ];

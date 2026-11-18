@@ -6,6 +6,7 @@ require_once __DIR__ . '/../includes/security.php';
 start_admin_session();
 
 $errorMessage = '';
+$successMessage = ($_GET['setup'] ?? '') === 'complete' ? 'Admin account created. You can now sign in.' : '';
 $email = '';
 
 if (($_GET['expired'] ?? '') === '1') {
@@ -107,6 +108,9 @@ $csrfToken = get_csrf_token();
 
     <?php if ($errorMessage !== ''): ?>
       <p class="admin-message" role="alert"><?= escape_html($errorMessage) ?></p>
+    <?php endif; ?>
+    <?php if ($successMessage !== ''): ?>
+      <p role="status"><?= escape_html($successMessage) ?></p>
     <?php endif; ?>
 
     <form method="post" action="login.php">

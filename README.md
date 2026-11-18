@@ -84,11 +84,13 @@ The application requires PHP 8.0 or newer with PDO MySQL and Fileinfo enabled; X
 2. In phpMyAdmin, import `database/schema.sql`. It creates the `personal_portfolio` database and inserts the existing portfolio content as starter data.
 3. Copy `includes/config.example.php` to `includes/config.local.php` and set the database username and password for your local MySQL installation. This local file is ignored by Git.
 4. Open the project through Apache, for example `http://localhost/My-ITS-300-personal-portfolio-website/`.
-5. Create the first admin account from a command prompt in the project folder: `C:\xampp\php\php.exe database\create_admin.php nielamae959@gmail.com`. The script generates a random password and displays it once.
+5. Create the first admin account from a command prompt in the project folder: `C:\xampp\php\php.exe database\create_admin.php nielamae959@gmail.com`. The script generates a random password and displays it once. On hosting without command-line access, use the one-time setup page instead.
 6. Open `http://localhost/My-ITS-300-personal-portfolio-website/admin/login.php` and sign in with the generated credentials.
 7. Use the dashboard to change the admin login email or password, edit profile and website settings, manage portfolio content, and review contact messages.
 
-The PHP connection helper is in `includes/database.php`. Keep the database credentials in the ignored `includes/config.local.php` file and never commit that file. Uploaded files are restricted by `uploads/.htaccess` on Apache.
+For hosted first-admin setup, generate a random token with `C:\xampp\php\php.exe -r "echo bin2hex(random_bytes(32)), PHP_EOL;"` and add it as `admin_setup_token` in the ignored `includes/config.local.php`. Open `/admin/setup.php` and enter that token with the login email and a strong password. After creation, remove the token and the `admin/setup.php` file from the host. The setup page is unavailable when an admin already exists.
+
+The PHP connection helper is in `includes/database.php`. Keep the database credentials and setup token in the ignored `includes/config.local.php` file and never commit that file. Uploaded files are restricted by `uploads/.htaccess` on Apache.
 
 ---
 
