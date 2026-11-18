@@ -1,17 +1,24 @@
 const messageForm = document.getElementById('contactMessageForm');
 const contactToken = document.getElementById('contactToken');
 const messageStatus = document.getElementById('successMsg');
+const unavailableMessage = 'The contact form is temporarily unavailable. Please use the email link above.';
 
 if (messageForm && contactToken && messageStatus) {
   let csrfToken = '';
   fetch('api/contact-token.php')
-    .then(response => response.ok ? response.json() : Promise.reject(new Error('The contact form is unavailable.')))
+    .then(response => {
+      if (!response.ok) throw new Error(unavailableMessage);
+      return response.json();
+    })
     .then(data => {
-      if (typeof data.csrf_token !== 'string') throw new Error('The contact form token is missing.');
+      if (!data || typeof data.csrf_token !== 'string') throw new Error(unavailableMessage);
       csrfToken = data.csrf_token;
       contactToken.value = csrfToken;
     })
-    .catch(error => { messageStatus.textContent = error.message; });
+    .catch(error => {
+      console.error('Contact form token request failed:', error);
+      messageStatus.textContent = unavailableMessage;
+    });
 
   messageForm.addEventListener('submit', async event => {
     event.preventDefault();
@@ -19,13 +26,28 @@ if (messageForm && contactToken && messageStatus) {
     try {
       if (!csrfToken) throw new Error('Wait for the contact form to finish loading.');
       const response = await fetch('api/contact.php', { method: 'POST', body: new FormData(messageForm) });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'The message could not be sent.');
+      let result;
+      try {
+        result = await response.json();
+      } catch (error) {
+        console.error('Contact form returned a non-JSON response:', error);
+        messageStatus.textContent = unavailableMessage;
+        return;
+      }
+      if (!response.ok) {
+        messageStatus.textContent = typeof result.error === 'string' ? result.error : unavailableMessage;
+        return;
+      }
+      if (typeof result.message !== 'string') throw new Error(unavailableMessage);
       messageStatus.textContent = result.message;
       messageForm.reset();
       contactToken.value = csrfToken;
     } catch (error) {
-      messageStatus.textContent = error.message;
+      if (error.message !== 'Wait for the contact form to finish loading.') {
+        console.error('Contact form submission failed:', error);
+      }
+      messageStatus.textContent = error.message === 'Wait for the contact form to finish loading.'
+        ? error.message : unavailableMessage;
     }
   });
 }
