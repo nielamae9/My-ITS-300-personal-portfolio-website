@@ -64,7 +64,7 @@ $profileImage = escape_html((string) ($profile['profile_image'] ?? 'images/profi
 <body>
   <header class="navbar">
     <div class="nav-container">
-      <a href="index.php" class="logo">Dani<span>ela</span></a>
+      <a href="admin/login.php" class="logo" aria-label="Admin login" title="Admin login">Dani<span>ela</span></a>
       <nav>
         <ul class="nav-menu" id="navMenu">
           <li><a href="index.php" class="active">Home</a></li>
