@@ -14,7 +14,7 @@ if (!is_file($configPath)) {
 
 $config = require $configPath;
 $setupToken = is_array($config) ? ($config['admin_setup_token'] ?? null) : null;
-if (!is_string($setupToken) || strlen($setupToken) < 32) {
+if (!is_string($setupToken) || strlen($setupToken) < 8) {
     http_response_code(404);
     exit('Setup is unavailable.');
 }
