@@ -6,24 +6,11 @@ require_once __DIR__ . '/../includes/admin_account.php';
 
 start_admin_session();
 
-$configPath = __DIR__ . '/../includes/config.local.php';
-if (!is_file($configPath)) {
-    http_response_code(404);
-    exit('Setup is unavailable.');
-}
-
-$config = require $configPath;
-$setupToken = is_array($config) ? ($config['admin_setup_token'] ?? null) : null;
-if (!is_string($setupToken) || strlen($setupToken) < 8) {
-    http_response_code(404);
-    exit('Setup is unavailable.');
-}
-
 try {
     $connection = get_database_connection();
     if ((int) $connection->query('SELECT COUNT(*) FROM admins')->fetchColumn() > 0) {
-        http_response_code(404);
-        exit('Setup is unavailable.');
+        header('Location: login.php');
+        exit;
     }
 } catch (PDOException $error) {
     error_log('Initial admin setup database error: ' . $error->getMessage());
@@ -36,17 +23,12 @@ try {
 }
 
 $errorMessage = '';
-$email = 'nielamae959@gmail.com';
+$email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!is_valid_csrf_token($_POST['csrf_token'] ?? null)) {
         http_response_code(400);
         $errorMessage = 'Refresh the page and try again.';
-    } elseif (!is_string($_POST['setup_token'] ?? null)
-        || !hash_equals($setupToken, $_POST['setup_token'])
-    ) {
-        http_response_code(404);
-        exit('Setup is unavailable.');
     } else {
         try {
             $email = create_initial_admin($connection, $_POST);
@@ -59,6 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log('Initial admin creation database error: ' . $error->getMessage());
             $errorMessage = 'The admin account could not be created.';
         } catch (RuntimeException $error) {
+            if ($error->getMessage() === 'An administrator already exists.') {
+                header('Location: login.php');
+                exit;
+            }
             error_log('Initial admin creation setup error: ' . $error->getMessage());
             $errorMessage = 'Admin setup is no longer available. Try signing in.';
         }
@@ -81,8 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($errorMessage !== ''): ?><p class="admin-message" role="alert"><?= escape_html($errorMessage) ?></p><?php endif; ?>
     <form method="post">
       <input type="hidden" name="csrf_token" value="<?= escape_html(get_csrf_token()) ?>">
-      <label for="setup-token">Setup token</label>
-      <input id="setup-token" name="setup_token" type="password" autocomplete="off" required>
       <label for="email">Login email</label>
       <input id="email" name="email" type="email" maxlength="254" value="<?= escape_html($email) ?>" required>
       <label for="password">Password (at least 12 characters)</label>
